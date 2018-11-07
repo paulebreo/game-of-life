@@ -1,4 +1,6 @@
-﻿const width = 50
+﻿const clientSocket = io(window.location.origin)
+
+const width = 50
 const height = 50 // width and height dimensions of the board
 let playInterval
 let isMouseDown = false
