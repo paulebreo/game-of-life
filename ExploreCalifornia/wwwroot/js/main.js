@@ -1,4 +1,8 @@
 ﻿const clientSocket = io(window.location.origin)
+const testEmitter = new EventEmitter()
+testEmitter.on('testEvent', data => {
+  console.log('the handler has been called with data', data)
+})
 
 const width = 50
 const height = 50 // width and height dimensions of the board
@@ -157,4 +161,5 @@ document.getElementById('stop_btn').addEventListener('click', event => {
 })
 document.getElementById('test_btn').addEventListener('click', event => {
   console.log('pressed test')
+  testEmitter.emit('testEvent', 42)
 })
