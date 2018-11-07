@@ -9,9 +9,10 @@ namespace ExploreCalifornia.Pages
 {
     public class IndexModel : PageModel
     {
+        public string Message { get; private set; } = "PageModel in C#";
         public void OnGet()
         {
-
+            Message += "hoy";
         }
     }
 }

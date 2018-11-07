@@ -1,6 +1,21 @@
 ﻿@page
+@using ExploreCalifornia.Pages
+@model IndexModel
+<div id="container">
+    <h1>Game of Life</h1>
+    <table id='board'></table>
 
-<h1>Hello, world!</h1>
-<h2>The time on the server is @DateTime.Now</h2>
+    <div id='control_panel'>
+        <button id='step_btn' class='button'>Step</button>
+        <button id='play_btn' class='button'>Play</button>
+        <button id='stop_btn' class='button'>Stop</button>
+        <button id='random_btn' class='button'>Randomize Board</button>
+        <button id='clear_btn' class='button'>Clear</button>
+    </div>
+
+    <footer>
+        <p>Built by [me] at <a href="http://www.fullstackacademy.com/">Fullstack Academy</a></p>
+    </footer>
+</div>
 
 
