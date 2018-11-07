@@ -4,6 +4,14 @@ testEmitter.on('testEvent', data => {
   console.log('the handler has been called with data', data)
 })
 
+clientSocket.on('connect', () => {
+  console.log('I have connected to the server')
+
+  testEmitter.on('draw', (start, end, strokeColor) => {
+    clientSocket.emit('paint', start, end, strokeColor)
+  })
+})
+
 const width = 50
 const height = 50 // width and height dimensions of the board
 let playInterval
