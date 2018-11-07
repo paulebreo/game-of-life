@@ -31,7 +31,7 @@ namespace ExploreCalifornia
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddSignalR();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -52,6 +52,9 @@ namespace ExploreCalifornia
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseSignalR(routes=> {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
             app.UseMvc();
         }
     }
