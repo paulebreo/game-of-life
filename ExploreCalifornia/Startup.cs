@@ -48,14 +48,15 @@ namespace ExploreCalifornia
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
 
             app.UseSignalR(routes=> {
                 routes.MapHub<ChatHub>("/chatHub");
             });
-            app.UseMvc();
+            //app.UseMvc();
         }
     }
 }
