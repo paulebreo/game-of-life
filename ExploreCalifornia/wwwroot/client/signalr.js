@@ -1,10 +1,12 @@
-const clientConnection = new signalR.HubConnectionBuilder()
-  .withUrl('/chatHub')
-  .build()
+// import signalR from '@aspnet/signalr'
+// const clientConnection = new signalR.HubConnectionBuilder()
+//   .withUrl('/chatHub')
+//   .build()
 
-clientConnection.on('ReceiveMessage', renderMessage)
-clientConnection.on('ReceiveGameOfLife', renderGoL)
+// clientConnection.on('ReceiveMessage', renderMessage)
+// clientConnection.on('ReceiveGameOfLife', renderGoL)
 
-clientConnection.start()
+// clientConnection.start()
 
-export default clientConnection
+// export default clientConnection
+export default {}

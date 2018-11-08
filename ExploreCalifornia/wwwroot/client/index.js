@@ -5,9 +5,13 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import { Provider } from 'react-redux'
-// import store from './store'
-// import { BrowserRouter as Router } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './store'
 import { Main } from './components'
 
-ReactDOM.render(<Main />, document.getElementById('container'))
+ReactDOM.render(
+  <Provider store={store}>
+    <Main />
+  </Provider>,
+  document.getElementById('container')
+)
