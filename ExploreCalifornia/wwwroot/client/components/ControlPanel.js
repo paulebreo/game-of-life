@@ -40,14 +40,14 @@ class ControlPanel extends React.Component {
             id="test_btn"
             className="button"
           >
-            Test
+            Init test
           </button>
           <button
             onClick={this.handleTestClick2}
             id="test_btn2"
             className="button"
           >
-            Test 2
+            Tick test
           </button>
           <button id="test_btn3" className="button">
             Test Tick
