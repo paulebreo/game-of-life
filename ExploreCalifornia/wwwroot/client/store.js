@@ -6,7 +6,9 @@ import clientSocket from './signalr'
 
 // INITIAL STATE
 
-const initialState = []
+const initialState = {
+  tableData: []
+}
 
 // ACTION TYPES
 
@@ -31,7 +33,7 @@ export const fetchTableData = () => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TABLE_DATA:
-      return action.payload
+      return { ...state, tableData: action.payload }
     default:
       return state
   }
