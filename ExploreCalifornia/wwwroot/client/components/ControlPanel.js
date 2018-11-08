@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setTableData, fetchTableData } from '../store'
+import { initTableData, updateTableData } from '../store'
 
 class ControlPanel extends React.Component {
   constructor() {
@@ -73,8 +73,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    setData: () => dispatch(setTableData([[1, 0], [0, 1]])),
-    fetchData: () => dispatch(fetchTableData())
+    setData: () => dispatch(initTableData([[1, 0], [0, 1]])),
+    fetchData: () => dispatch(updateTableData())
   }
 }
 

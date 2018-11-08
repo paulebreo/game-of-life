@@ -22,10 +22,17 @@ export const setTableData = tableData => {
 
 // THUNK CREATORS
 
-export const fetchTableData = () => {
+export const initTableData = () => {
+  return async dispatch => {
+    clientConnection.invoke('Init')
+    console.log('the is the fetchTableData thunk 1')
+  }
+}
+
+export const updateTableData = () => {
   return async dispatch => {
     clientConnection.invoke('Tick')
-    console.log('the is the fetchTableData thunk')
+    console.log('the is the fetchTableData thunk 2')
   }
 }
 

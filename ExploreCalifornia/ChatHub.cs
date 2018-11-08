@@ -53,10 +53,17 @@ namespace ExploreCalifornia
             GameOfLife.Increment();
             await Clients.All.SendAsync("ReceiveGameOfLife", GameOfLife.Count);
         }
-        public async Task Tick()
+        public async Task Init()
         {
             LifeSimulation.GenerateField();
-            await Clients.All.SendAsync("ReceiveGameOfLife", LifeSimulation.Cells);
+            System.Threading.Thread.Sleep(100);
+            await Clients.All.SendAsync("ReceiveInitialData", LifeSimulation.Cells);
+        }
+        public async Task Tick()
+        {
+            LifeSimulation.Grow();
+            System.Threading.Thread.Sleep(100);
+            await Clients.All.SendAsync("ReceiveNewData", LifeSimulation.Cells);
         }
     }
 }

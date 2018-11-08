@@ -54,7 +54,7 @@ namespace ExploreCalifornia
             //app.UseCookiePolicy();
 
             app.UseSignalR(routes=> {
-                routes.MapHub<ChatHub>("/chatHub");
+                routes.MapHub<ChatHub>("/gol");
             });
             //app.UseMvc();
         }
