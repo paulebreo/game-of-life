@@ -3,17 +3,25 @@ import { connect } from 'react-redux'
 import { setTableData } from '../store'
 
 class ControlPanel extends React.Component {
+  constructor() {
+    super()
+    this.handleTestClick = this.handleTestClick.bind(this)
+  }
+  handleTestClick(evt) {
+    console.log('clicked button')
+    this.props.setData()
+  }
   render() {
     return (
       <React.Fragment>
         <div id="control_panel">
-          <button id="step_btn" className="button">
+          <button type="button" id="step_btn" className="button">
             Step
           </button>
-          <button id="play_btn" className="button">
+          <button type="button" id="play_btn" className="button">
             Play
           </button>
-          <button id="stop_btn" className="button">
+          <button type="button" id="stop_btn" className="button">
             Stop
           </button>
           <button id="random_btn" className="button">
@@ -22,7 +30,11 @@ class ControlPanel extends React.Component {
           <button id="clear_btn" className="button">
             Clear
           </button>
-          <button id="test_btn" className="button">
+          <button
+            onClick={this.handleTestClick}
+            id="test_btn"
+            className="button"
+          >
             Test
           </button>
           <button id="test_btn2" className="button">
@@ -59,4 +71,4 @@ const mapDispatch = dispatch => {
 export default connect(
   mapState,
   mapDispatch
-)(Messages)
+)(ControlPanel)
