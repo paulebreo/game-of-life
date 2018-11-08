@@ -1,4 +1,5 @@
-﻿// const clientSocket = io(window.location.origin)
+﻿// SocketIO
+// const clientSocket = io(window.location.origin)
 // const testEmitter = new EventEmitter()
 // testEmitter.on('testEvent', data => {
 //   console.log('the handler has been called with data', data)
@@ -11,6 +12,18 @@
 //     clientSocket.emit('paint', start, end, strokeColor)
 //   })
 // })
+
+// SignalR
+// Initialize SignalR client
+const clientConnection = new signalR.HubConnectionBuilder()
+  .withUrl('/chatHub')
+  .build()
+
+clientConnection.on('ReceiveMessage', renderMessage)
+
+function renderMessage(name, time, message) {
+  console.log('you data from server', name, time, message)
+}
 
 const width = 50
 const height = 50 // width and height dimensions of the board
@@ -169,5 +182,5 @@ document.getElementById('stop_btn').addEventListener('click', event => {
 })
 document.getElementById('test_btn').addEventListener('click', event => {
   console.log('pressed test')
-  // testEmitter.emit('testEvent', 42)
+  clientConnection.invoke('SendMessage', 'foo', 'bar')
 })
