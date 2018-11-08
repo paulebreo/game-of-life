@@ -9,10 +9,9 @@ namespace ExploreCalifornia
 {
     public class ChatHub : Hub
     {
-        public GameOfLife Game { get; set; }
+
 
         public ChatHub() {
-
         }
         public async Task SendMessage(string name, string text, int num, List<String> mylist)
         {
@@ -49,9 +48,10 @@ namespace ExploreCalifornia
         }
         public async Task IncrementCount()
         {
-            var game = new GameOfLife();
-            game.Increment();
-            await Clients.All.SendAsync("ReceiveGameOfLife", game.Count);
+           
+            GameOfLife.Increment();
+            GameOfLife.Increment();
+            await Clients.All.SendAsync("ReceiveGameOfLife", GameOfLife.Count);
         }
     }
 }
