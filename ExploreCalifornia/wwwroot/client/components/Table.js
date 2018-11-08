@@ -1,11 +1,12 @@
 import React from 'react'
 import uuidv1 from 'uuid/v1'
+import { connect } from 'react-redux'
 
 const Table = props => (
   <React.Fragment>
     <table id="board">
       <tbody>
-        {props.data.map(row => (
+        {props.tableData.map(row => (
           <tr key={uuidv1()}>
             {row.map(col => (
               <td className={col === 1 ? 'alive' : ''} key={uuidv1()} />
@@ -17,4 +18,11 @@ const Table = props => (
   </React.Fragment>
 )
 
-export default Table
+const mapState = state => {
+  const { tableData } = state
+  return {
+    tableData
+  }
+}
+
+export default connect(mapState)(Table)
