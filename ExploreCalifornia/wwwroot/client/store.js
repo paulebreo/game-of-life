@@ -25,8 +25,7 @@ export const setTableData = tableData => {
 export const fetchTableData = () => {
   return async dispatch => {
     // clientSocket.emit('new-channel', newChannel)
-    const action = setTableData(messages)
-    dispatch(action)
+    console.log('the is the fetchTableData thunk')
   }
 }
 

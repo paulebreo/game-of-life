@@ -1,15 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setTableData } from '../store'
+import { setTableData, fetchTableData } from '../store'
 
 class ControlPanel extends React.Component {
   constructor() {
     super()
     this.handleTestClick = this.handleTestClick.bind(this)
+    this.handleTestClick2 = this.handleTestClick2.bind(this)
   }
   handleTestClick(evt) {
-    console.log('clicked button')
+    console.log('clicked test 1')
     this.props.setData()
+  }
+  handleTestClick2(evt) {
+    console.log('clicked test 2')
+    this.props.fetchData()
   }
   render() {
     return (
@@ -37,7 +42,11 @@ class ControlPanel extends React.Component {
           >
             Test
           </button>
-          <button id="test_btn2" className="button">
+          <button
+            onClick={this.handleTestClick2}
+            id="test_btn2"
+            className="button"
+          >
             Test 2
           </button>
           <button id="test_btn3" className="button">
@@ -64,7 +73,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    setData: () => dispatch(setTableData([[1, 0], [0, 1]]))
+    setData: () => dispatch(setTableData([[1, 0], [0, 1]])),
+    fetchData: () => dispatch(fetchTableData())
   }
 }
 
