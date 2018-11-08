@@ -8,6 +8,10 @@ node_modules
 .idea
 npm-debug.log
 
+.DS_Store
+public/bundle.js
+public/bundle.js.map
+
 # User-specific files
 *.suo
 *.user
