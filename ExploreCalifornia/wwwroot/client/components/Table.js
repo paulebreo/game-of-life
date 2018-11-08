@@ -8,7 +8,7 @@ const Table = props => (
         {props.data.map(row => (
           <tr key={uuidv1()}>
             {row.map(col => (
-              <td key={uuidv1()}>{col}</td>
+              <td className={col === 1 ? 'alive' : ''} key={uuidv1()} />
             ))}
           </tr>
         ))}
