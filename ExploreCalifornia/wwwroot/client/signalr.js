@@ -1,14 +1,10 @@
-import io from 'socket.io-client'
-import store, { getMessage } from './store'
+const clientConnection = new signalR.HubConnectionBuilder()
+  .withUrl('/chatHub')
+  .build()
 
-const clientSocket = io(window.location.origin)
+clientConnection.on('ReceiveMessage', renderMessage)
+clientConnection.on('ReceiveGameOfLife', renderGoL)
 
-clientSocket.on('connect', () => {
-  console.log('I am now connected to the server!')
+clientConnection.start()
 
-  clientSocket.on('new-message', message => {
-    store.dispatch(getMessage(message))
-  })
-})
-
-export default clientSocket
+export default clientConnection
