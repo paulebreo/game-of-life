@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import loggingMiddleware from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import clientSocket from './signalr'
+import clientConnection from './signalr'
 
 // INITIAL STATE
 
@@ -24,7 +24,7 @@ export const setTableData = tableData => {
 
 export const fetchTableData = () => {
   return async dispatch => {
-    // clientSocket.emit('new-channel', newChannel)
+    clientConnection.invoke('Tick')
     console.log('the is the fetchTableData thunk')
   }
 }
