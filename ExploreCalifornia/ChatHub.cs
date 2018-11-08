@@ -9,7 +9,7 @@ namespace ExploreCalifornia
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string name, string text)
+        public async Task SendMessage(string name, string text, int num)
         {
             var message = new ChatMessage
             {
@@ -30,7 +30,7 @@ namespace ExploreCalifornia
                                         message.SenderName, 
                                         message.SentAt, 
                                         message.Text, 
-                                        lists);
+                                        lists, num);
         }
     }
 }
