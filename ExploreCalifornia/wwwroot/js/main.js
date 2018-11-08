@@ -23,8 +23,8 @@ clientConnection.on('ReceiveMessage', renderMessage)
 
 clientConnection.start()
 
-function renderMessage(name, time, message) {
-  console.log('you data from server', name, time, message)
+function renderMessage(name, time, message, lists) {
+  console.log('you data from server', name, time, message, lists)
 }
 
 const width = 50
