@@ -39,6 +39,7 @@ td.alive {
     text-align: center;
     background-color: #2ba6cb;
     color: #fefefe;
+    margin-left: 0.5rem;
 }
 
     .button:hover, .button:focus {

@@ -1,10 +1,13 @@
 import React from 'react'
+import ControlPanel from './ControlPanel'
+import Table from './Table'
 
 const Main = props => (
-  <div>
+  <React.Fragment>
     <h1>helloGame of Life</h1>
-    <table id="board" />
-  </div>
+    <Table />
+    <ControlPanel />
+  </React.Fragment>
 )
 
 export default Main
