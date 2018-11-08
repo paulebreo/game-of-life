@@ -24,6 +24,13 @@ namespace ExploreCalifornia
 
             //int[][] lists = new int[][] { list1, list2, list3, list4 };
             List<int[]> lists = new List<int[]>() { list1, list2, list3, list4 };
+
+            List<int> listA = new List<int>() { 0, 0 };
+            List<int> listB = new List<int>() { 0, 1 };
+            List<int> listC = new List<int>();
+            listC.Add(46);
+            listC.Add(2);
+            List<List<int>> secondList = new List<List<int>>() { listA, listB, listC};
             // Broadcast to all
             //var foo = "fre";
             await Clients.All.SendAsync("ReceiveMessage", 
@@ -32,7 +39,8 @@ namespace ExploreCalifornia
                                         message.Text, 
                                         lists, 
                                         num, 
-                                        mylist);
+                                        mylist,
+                                       secondList);
         }
     }
 }

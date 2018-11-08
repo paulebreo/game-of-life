@@ -23,7 +23,15 @@ clientConnection.on('ReceiveMessage', renderMessage)
 
 clientConnection.start()
 
-function renderMessage(name, time, message, lists, num, theStrings) {
+function renderMessage(
+  name,
+  time,
+  message,
+  lists,
+  num,
+  theStrings,
+  secondList
+) {
   console.log(
     'you data from server',
     name,
@@ -31,7 +39,8 @@ function renderMessage(name, time, message, lists, num, theStrings) {
     message,
     lists,
     num,
-    theStrings
+    theStrings,
+    secondList
   )
 }
 
