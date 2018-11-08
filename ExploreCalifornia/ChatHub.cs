@@ -50,6 +50,7 @@ namespace ExploreCalifornia
         public async Task IncrementCount()
         {
             var game = new GameOfLife();
+            game.Increment();
             await Clients.All.SendAsync("ReceiveGameOfLife", game.Count);
         }
     }

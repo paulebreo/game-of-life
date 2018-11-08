@@ -10,7 +10,8 @@ namespace ExploreCalifornia.Models
             this.Count = 0;
         }
         public void Increment() {
-            this.Count++;
+            this.Count = this.Count + 2;
+            Console.WriteLine("increment {0}", this.Count);
         }
 
     }
