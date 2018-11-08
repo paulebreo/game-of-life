@@ -23,8 +23,16 @@ clientConnection.on('ReceiveMessage', renderMessage)
 
 clientConnection.start()
 
-function renderMessage(name, time, message, lists, num) {
-  console.log('you data from server', name, time, message, lists, num)
+function renderMessage(name, time, message, lists, num, theStrings) {
+  console.log(
+    'you data from server',
+    name,
+    time,
+    message,
+    lists,
+    num,
+    theStrings
+  )
 }
 
 const width = 50
@@ -184,5 +192,6 @@ document.getElementById('stop_btn').addEventListener('click', event => {
 })
 document.getElementById('test_btn').addEventListener('click', event => {
   console.log('pressed test')
-  clientConnection.invoke('SendMessage', 'foo', 'bar', 42)
+  let strArr = new Array('foo', 'bar')
+  clientConnection.invoke('SendMessage', 'foo', 'bar', 3, strArr)
 })
