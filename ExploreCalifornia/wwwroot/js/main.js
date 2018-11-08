@@ -212,3 +212,7 @@ document.getElementById('test_btn2').addEventListener('click', event => {
   console.log('pressed test button 2')
   clientConnection.invoke('IncrementCount')
 })
+document.getElementById('test_btn3').addEventListener('click', event => {
+  console.log('pressed test button 3')
+  clientConnection.invoke('Tick')
+})

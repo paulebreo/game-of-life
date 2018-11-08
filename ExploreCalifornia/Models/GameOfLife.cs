@@ -5,6 +5,7 @@ namespace ExploreCalifornia.Models
     {
         public static int Count { get; set; }
 
+
         public GameOfLife()
         {
             Count = 0;
