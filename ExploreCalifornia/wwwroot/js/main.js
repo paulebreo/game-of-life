@@ -20,9 +20,13 @@ const clientConnection = new signalR.HubConnectionBuilder()
   .build()
 
 clientConnection.on('ReceiveMessage', renderMessage)
+clientConnection.on('ReceiveGameOfLife', renderGoL)
 
 clientConnection.start()
 
+function renderGoL(num) {
+  console.log('got message from server', num)
+}
 function renderMessage(
   name,
   time,
@@ -203,4 +207,8 @@ document.getElementById('test_btn').addEventListener('click', event => {
   console.log('pressed test')
   let strArr = new Array('foo', 'bar')
   clientConnection.invoke('SendMessage', 'foo', 'bar', 3, strArr)
+})
+document.getElementById('test_btn2').addEventListener('click', event => {
+  console.log('pressed test button 2')
+  clientConnection.invoke('IncrementCount')
 })

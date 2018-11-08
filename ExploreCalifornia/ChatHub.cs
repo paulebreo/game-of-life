@@ -42,5 +42,11 @@ namespace ExploreCalifornia
                                         mylist,
                                        secondList);
         }
+        public async Task IncrementCount()
+        {
+            var gol = new GameOfLife();
+            int foo = 1;
+            await Clients.All.SendAsync("ReceiveGameOfLife", foo);
+        }
     }
 }
