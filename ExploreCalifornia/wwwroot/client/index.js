@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom'
 // import { Provider } from 'react-redux'
 // import store from './store'
 // import { BrowserRouter as Router } from 'react-router-dom'
-// import { Main } from './components'
+import { Main } from './components'
 
-const Hello = props => <div> hello from react </div>
-ReactDOM.render(<Hello />, document.getElementById('app'))
+ReactDOM.render(<Main />, document.getElementById('container'))
