@@ -69,9 +69,9 @@ namespace ExploreCalifornia
         }
         public async Task Tick()
         {
-            //LifeSimulation.Grow();
+            life.Grow();
             System.Threading.Thread.Sleep(100);
-            //await Clients.All.SendAsync("ReceiveNewData", LifeSimulation.Cells);
+            await Clients.All.SendAsync("ReceiveNewData", life.GetState());
         }
     }
 }
