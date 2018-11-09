@@ -63,14 +63,14 @@ namespace ExploreCalifornia
         }
         public async Task Init()
         {
-            life.SetDimensions(10, 10);
-            System.Threading.Thread.Sleep(100);
+            life.SetDimensions(50, 50);
+            System.Threading.Thread.Sleep(10);
             await Clients.All.SendAsync("ReceiveInitialData", life.GetState());
         }
         public async Task Tick()
         {
             life.Grow();
-            System.Threading.Thread.Sleep(100);
+            System.Threading.Thread.Sleep(10);
             await Clients.All.SendAsync("ReceiveNewData", life.GetState());
         }
     }

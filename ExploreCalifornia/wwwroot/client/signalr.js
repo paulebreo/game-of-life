@@ -8,8 +8,6 @@ const clientConnection = new signalR.HubConnectionBuilder()
 
 // clientConnection.on('ReceiveMessage', renderMessage)
 clientConnection.on('ReceiveInitialData', data => {
-  console.log('the initial data', data)
-
   store.dispatch(setTableData(data))
 })
 clientConnection.on('ReceiveNewData', data => {

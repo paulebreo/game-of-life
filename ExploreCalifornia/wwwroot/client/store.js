@@ -25,20 +25,17 @@ export const setTableData = tableData => {
 export const initTableData = () => {
   return async dispatch => {
     clientConnection.invoke('Init')
-    console.log('the is the fetchTableData thunk 1')
   }
 }
 
 export const updateTableData = () => {
   return async dispatch => {
     clientConnection.invoke('Tick')
-    console.log('the is the fetchTableData thunk 2')
   }
 }
 export const incrementCount = () => {
   return async dispatch => {
     clientConnection.invoke('IncrementCount')
-    console.log('increment count thunk')
   }
 }
 
