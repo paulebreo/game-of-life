@@ -3,15 +3,14 @@ namespace ExploreCalifornia.Models
 {
     public class GameOfLife
     {
-        public static int Count { get; set; }
+        public  int Count { get; set; }
 
-
-        public GameOfLife()
+        public GameOfLife(int Count)
         {
-            Count = 0;
+            this.Count = Count;
         }
-        public static void Increment() {
-            Count = Count + 2;
+        public  void Increment() {
+            this.Count++;
             Console.WriteLine("increment {0}", Count);
         }
 

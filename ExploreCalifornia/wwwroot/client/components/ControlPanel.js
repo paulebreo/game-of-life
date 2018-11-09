@@ -1,16 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { initTableData, updateTableData } from '../store'
+import { initTableData, updateTableData, incrementCount } from '../store'
 
 class ControlPanel extends React.Component {
   constructor() {
     super()
+    this.handleTestIncrement = this.handleTestIncrement.bind(this)
     this.handleTestClick = this.handleTestClick.bind(this)
     this.handleTestClick2 = this.handleTestClick2.bind(this)
   }
   handleTestClick(evt) {
     console.log('clicked test 1')
     this.props.setData()
+  }
+  handleTestIncrement(evt) {
+    console.log('clicked test 1')
+    this.props.incrementCount()
   }
   handleTestClick2(evt) {
     console.log('clicked test 2')
@@ -34,6 +39,13 @@ class ControlPanel extends React.Component {
           </button>
           <button id="clear_btn" className="button">
             Clear
+          </button>
+          <button
+            onClick={this.handleTestIncrement}
+            id="clear_btn"
+            className="button"
+          >
+            Test Increment
           </button>
           <button
             onClick={this.handleTestClick}
@@ -74,7 +86,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     setData: () => dispatch(initTableData([[1, 0], [0, 1]])),
-    fetchData: () => dispatch(updateTableData())
+    fetchData: () => dispatch(updateTableData()),
+    incrementCount: () => dispatch(incrementCount())
   }
 }
 

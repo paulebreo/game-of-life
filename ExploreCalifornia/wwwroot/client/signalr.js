@@ -13,6 +13,9 @@ clientConnection.on('ReceiveInitialData', data => {
 clientConnection.on('ReceiveNewData', data => {
   store.dispatch(setTableData(data))
 })
+clientConnection.on('ReceiveCount', data => {
+  console.log('the count is', data)
+})
 
 clientConnection.start()
 

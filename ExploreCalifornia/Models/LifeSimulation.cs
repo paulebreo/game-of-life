@@ -3,9 +3,9 @@ namespace ExploreCalifornia.Models
 {
     public class LifeSimulation
     {
-        public static int Height = 10;
-        public static int Width = 10;
-        public static int[,] Cells = new int[Height, Width];
+        private int  Heigth;
+        private  int Width;
+        public bool[,] Cells { get; set; }
 
         /// <summary>
         /// Initializes a new Game of Life.
@@ -13,15 +13,18 @@ namespace ExploreCalifornia.Models
         /// <param name="Heigth">Heigth of the cell field.</param>
         /// <param name="Width">Width of the cell field.</param>
 
-        public LifeSimulation()
+        public LifeSimulation(int Heigth, int Width)
         {
-
+            this.Heigth = Heigth;
+            this.Width = Width;
+            Cells = new bool[Heigth, Width];
+            GenerateField();
         }
 
         /// <summary>
         /// Advances the game by one generation and prints the current state to console.
         /// </summary>
-        public static void DrawAndGrow()
+        public void DrawAndGrow()
         {
             DrawGame();
             Grow();
@@ -31,31 +34,31 @@ namespace ExploreCalifornia.Models
         /// Advances the game by one generation according to GoL's ruleset.
         /// </summary>
 
-        public static void Grow()
+        public void Grow()
         {
-            for (int i = 0; i < Height; i++)
+            for (int i = 0; i < Heigth; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
                     int numOfAliveNeighbors = GetNeighbors(i, j);
 
-                    if (Cells[i, j] == 1)
+                    if (Cells[i, j])
                     {
                         if (numOfAliveNeighbors < 2)
                         {
-                            Cells[i, j] = 0;
+                            Cells[i, j] = false;
                         }
 
                         if (numOfAliveNeighbors > 3)
                         {
-                            Cells[i, j] = 1;
+                            Cells[i, j] = false;
                         }
                     }
                     else
                     {
                         if (numOfAliveNeighbors == 3)
                         {
-                            Cells[i, j] = 1;
+                            Cells[i, j] = true;
                         }
                     }
                 }
@@ -69,7 +72,7 @@ namespace ExploreCalifornia.Models
         /// <param name="y">Y-coordinate of the cell.</param>
         /// <returns>The number of alive neighbors.</returns>
 
-        public static int GetNeighbors(int x, int y)
+        private int GetNeighbors(int x, int y)
         {
             int NumOfAliveNeighbors = 0;
 
@@ -77,9 +80,9 @@ namespace ExploreCalifornia.Models
             {
                 for (int j = y - 1; j < y + 2; j++)
                 {
-                    if (!((i < 0 || j < 0) || (i >= Height || j >= Width)))
+                    if (!((i < 0 || j < 0) || (i >= Heigth || j >= Width)))
                     {
-                        if (Cells[i, j] == 1) NumOfAliveNeighbors++;
+                        if (Cells[i, j] == true) NumOfAliveNeighbors++;
                     }
                 }
             }
@@ -90,13 +93,13 @@ namespace ExploreCalifornia.Models
         /// Draws the game to the console.
         /// </summary>
 
-        public static void DrawGame()
+        private void DrawGame()
         {
-            for (int i = 0; i < Height; i++)
+            for (int i = 0; i < Heigth; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    Console.Write(Cells[i, j] == 1 ? "x" : " ");
+                    Console.Write(Cells[i, j] ? "x" : " ");
                     if (j == Width - 1) Console.WriteLine("\r");
                 }
             }
@@ -107,19 +110,19 @@ namespace ExploreCalifornia.Models
         /// Initializes the field with random boolean values.
         /// </summary>
 
-        public static void GenerateField()
+        private void GenerateField()
         {
             Random generator = new Random();
             int number;
-            number = generator.Next(2);
-            for (int i = 0; i < Height; i++)
+            for (int i = 0; i < Heigth; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
                     number = generator.Next(2);
-                    Cells[i, j] = ((number == 0) ? 0 : 1);
+                    Cells[i, j] = ((number == 0) ? false : true);
                 }
             }
         }
     }
+
 }

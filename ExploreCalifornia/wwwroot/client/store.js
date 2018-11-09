@@ -35,6 +35,12 @@ export const updateTableData = () => {
     console.log('the is the fetchTableData thunk 2')
   }
 }
+export const incrementCount = () => {
+  return async dispatch => {
+    clientConnection.invoke('IncrementCount')
+    console.log('increment count thunk')
+  }
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

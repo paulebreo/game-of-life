@@ -10,9 +10,12 @@ namespace ExploreCalifornia
     public class ChatHub : Hub
     {
 
+        private  GameOfLife gol = null;
 
         public ChatHub() {
+            this.gol = new GameOfLife(42);
         }
+
         public async Task SendMessage(string name, string text, int num, List<String> mylist)
         {
             var message = new ChatMessage
@@ -48,22 +51,22 @@ namespace ExploreCalifornia
         }
         public async Task IncrementCount()
         {
-           
-            GameOfLife.Increment();
-            GameOfLife.Increment();
-            await Clients.All.SendAsync("ReceiveGameOfLife", GameOfLife.Count);
+
+            gol.Increment();
+            Console.WriteLine("The count {0}", gol.Count);
+            await Clients.All.SendAsync("ReceiveCount", 1);
         }
         public async Task Init()
         {
-            LifeSimulation.GenerateField();
+            //LifeSimulation.GenerateField();
             System.Threading.Thread.Sleep(100);
-            await Clients.All.SendAsync("ReceiveInitialData", LifeSimulation.Cells);
+            //await Clients.All.SendAsync("ReceiveInitialData", LifeSimulation.Cells);
         }
         public async Task Tick()
         {
-            LifeSimulation.Grow();
+            //LifeSimulation.Grow();
             System.Threading.Thread.Sleep(100);
-            await Clients.All.SendAsync("ReceiveNewData", LifeSimulation.Cells);
+            //await Clients.All.SendAsync("ReceiveNewData", LifeSimulation.Cells);
         }
     }
 }
