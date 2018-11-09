@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="wwwroot\public\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="EmptyClass.cs" />
