@@ -3,16 +3,15 @@ namespace ExploreCalifornia.Services
 {
     public class GameOfLifeService : IGameOfLifeService
     {
-        public int Count { get; set; }
+        private  int _count = 0;
 
-        public GameOfLifeService(int Count)
-        {
-            this.Count = Count;
-        }
         public void Increment()
         {
-            this.Count++;
-            Console.WriteLine("increment {0}", Count);
+            _count++;
+            Console.WriteLine("increment {0}", _count);
+        }
+        public int GetCount() {
+            return _count;
         }
     }
 }

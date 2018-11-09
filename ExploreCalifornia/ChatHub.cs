@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ExploreCalifornia.Models;
+using ExploreCalifornia.Services;
 
 namespace ExploreCalifornia
 {
     public class ChatHub : Hub
     {
 
-        private  GameOfLife gol = null;
+        //private  GameOfLife gol = null;
+        private readonly IGameOfLifeService gol;
 
-        public ChatHub() {
-            this.gol = new GameOfLife(42);
+        public ChatHub(IGameOfLifeService gol) {
+            //this.gol = new GameOfLife(42);
+            this.gol = gol;
         }
 
         public async Task SendMessage(string name, string text, int num, List<String> mylist)
@@ -53,8 +56,8 @@ namespace ExploreCalifornia
         {
 
             gol.Increment();
-            Console.WriteLine("The count {0}", gol.Count);
-            await Clients.All.SendAsync("ReceiveCount", 1);
+            Console.WriteLine("The count {0}", gol.GetCount());
+            await Clients.All.SendAsync("ReceiveCount", gol.GetCount());
         }
         public async Task Init()
         {

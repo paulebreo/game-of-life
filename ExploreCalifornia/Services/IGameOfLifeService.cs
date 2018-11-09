@@ -6,5 +6,6 @@ namespace ExploreCalifornia.Services
     public interface IGameOfLifeService
     {
         void Increment();
+        int GetCount();
     }
 }
