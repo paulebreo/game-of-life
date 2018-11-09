@@ -9,7 +9,7 @@ const Table = props => (
         {props.tableData.map(row => (
           <tr key={uuidv1()}>
             {row.map(col => (
-              <td className={col === 1 ? 'alive' : ''} key={uuidv1()} />
+              <td className={col === true ? 'alive' : ''} key={uuidv1()} />
             ))}
           </tr>
         ))}

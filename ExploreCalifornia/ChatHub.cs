@@ -13,10 +13,12 @@ namespace ExploreCalifornia
 
         //private  GameOfLife gol = null;
         private readonly IGameOfLifeService gol;
+        private readonly ILifeSimulationService life;
 
-        public ChatHub(IGameOfLifeService gol) {
+        public ChatHub(IGameOfLifeService gol, ILifeSimulationService life) {
             //this.gol = new GameOfLife(42);
             this.gol = gol;
+            this.life = life;
         }
 
         public async Task SendMessage(string name, string text, int num, List<String> mylist)
@@ -61,9 +63,9 @@ namespace ExploreCalifornia
         }
         public async Task Init()
         {
-            //LifeSimulation.GenerateField();
+            life.SetDimensions(10, 10);
             System.Threading.Thread.Sleep(100);
-            //await Clients.All.SendAsync("ReceiveInitialData", LifeSimulation.Cells);
+            await Clients.All.SendAsync("ReceiveInitialData", life.GetState());
         }
         public async Task Tick()
         {
