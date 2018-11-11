@@ -16,6 +16,7 @@ const initialState = {
 const SET_TABLE_DATA = 'SET_TABLE_DATA'
 const MOUSE_DOWN = 'MOUSE_DOWN'
 const MOUSE_UP = 'MOUSE_UP'
+const TOGGLE_CELL = 'TOGGLE_CELL'
 
 // ACTION CREATORS
 
@@ -24,6 +25,7 @@ export const setTableData = tableData => {
 }
 export const mouseDown = () => ({ type: MOUSE_DOWN })
 export const mouseUp = () => ({ type: MOUSE_UP })
+export const toggleCell = (row, column) => ({ type: TOGGLE_CELL, row, column })
 
 // THUNK CREATORS
 
@@ -52,6 +54,11 @@ const reducer = (state = initialState, action) => {
       return { ...state, isMouseDown: true }
     case MOUSE_UP:
       return { ...state, isMouseDown: false }
+    case TOGGLE_CELL: {
+      const newTableData = [...state.tableData]
+      newTableData[action.row][action.column] = true
+      return { ...state, tableData: newTableData }
+    }
     default:
       return state
   }
@@ -59,7 +66,7 @@ const reducer = (state = initialState, action) => {
 
 const store = createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(thunkMiddleware, loggingMiddleware))
+  composeWithDevTools(applyMiddleware(thunkMiddleware))
 )
 
 export default store
