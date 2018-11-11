@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 
 const Table = props => (
   <React.Fragment>
-    <table id="board">
+    <table
+      id="board"
+      onMouseDown={props.handleMouseDown}
+      onMouseUp={props.handleMouseUp}
+    >
       <tbody>
         {props.tableData.map(row => (
           <tr key={uuidv1()}>
@@ -25,4 +29,14 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(Table)
+const mapDispatch = dispatch => {
+  return {
+    handleMouseDown: evt => console.log('moused down'),
+    handleMouseUp: evt => console.log('mouse up')
+  }
+}
+
+export default connect(
+  mapState,
+  mapDispatch
+)(Table)

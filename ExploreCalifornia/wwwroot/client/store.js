@@ -7,18 +7,23 @@ import clientConnection from './signalr'
 // INITIAL STATE
 
 const initialState = {
-  tableData: []
+  tableData: [],
+  isMouseDown: false
 }
 
 // ACTION TYPES
 
 const SET_TABLE_DATA = 'SET_TABLE_DATA'
+const MOUSE_DOWN = 'MOUSE_DOWN'
+const MOUSE_UP = 'MOUSE_UP'
 
 // ACTION CREATORS
 
 export const setTableData = tableData => {
   return { type: SET_TABLE_DATA, payload: tableData }
 }
+export const mouseDown = () => ({ type: MOUSE_DOWN })
+export const mouseUp = () => ({ type: MOUSE_UP })
 
 // THUNK CREATORS
 
@@ -43,6 +48,10 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TABLE_DATA:
       return { ...state, tableData: action.payload }
+    case MOUSE_DOWN:
+      return { ...state, isMouseDown: true }
+    case MOUSE_UP:
+      return { ...state, isMouseDown: false }
     default:
       return state
   }
