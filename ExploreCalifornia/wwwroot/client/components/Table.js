@@ -16,7 +16,12 @@ const Table = props => (
           <tr key={uuidv1()}>
             {row.map((col, colIdx) => (
               // <td className={col === true ? 'alive' : ''} key={uuidv1()} />
-              <TableCell key={uuidv1()} rowIdx={rowIdx} colIdx={colIdx} />
+              <TableCell
+                className={col === true ? 'alive' : ''}
+                key={uuidv1()}
+                rowIdx={rowIdx}
+                colIdx={colIdx}
+              />
             ))}
           </tr>
         ))}
