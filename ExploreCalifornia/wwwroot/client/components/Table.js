@@ -2,6 +2,7 @@ import React from 'react'
 import uuidv1 from 'uuid/v1'
 import { connect } from 'react-redux'
 import { mouseDown, mouseUp } from '../store'
+import TableCell from './TableCell'
 
 const Table = props => (
   <React.Fragment>
@@ -11,10 +12,11 @@ const Table = props => (
       onMouseUp={props.handleMouseUp}
     >
       <tbody>
-        {props.tableData.map(row => (
+        {props.tableData.map((row, rowIdx) => (
           <tr key={uuidv1()}>
-            {row.map(col => (
-              <td className={col === true ? 'alive' : ''} key={uuidv1()} />
+            {row.map((col, colIdx) => (
+              // <td className={col === true ? 'alive' : ''} key={uuidv1()} />
+              <TableCell key={uuidv1()} rowIdx={rowIdx} colIdx={colIdx} />
             ))}
           </tr>
         ))}
