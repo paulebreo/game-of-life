@@ -1,6 +1,7 @@
 import React from 'react'
 import uuidv1 from 'uuid/v1'
 import { connect } from 'react-redux'
+import { mouseDown, mouseUp } from '../store'
 
 const Table = props => (
   <React.Fragment>
@@ -31,8 +32,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleMouseDown: evt => console.log('moused down'),
-    handleMouseUp: evt => console.log('mouse up')
+    handleMouseDown: evt => dispatch(mouseDown()),
+    handleMouseUp: evt => dispatch(mouseUp())
   }
 }
 
