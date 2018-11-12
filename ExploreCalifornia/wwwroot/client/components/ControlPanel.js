@@ -87,30 +87,6 @@ class ControlPanel extends React.Component {
           <button onClick={this.handleDelete} id="clear_btn" className="button">
             Clear
           </button>
-          <button
-            onClick={this.handleTestIncrement}
-            id="clear_btn"
-            className="button"
-          >
-            Test Increment
-          </button>
-          <button
-            onClick={this.handleTestClick}
-            id="test_btn"
-            className="button"
-          >
-            Init test
-          </button>
-          <button
-            onClick={this.handleTestClick2}
-            id="test_btn2"
-            className="button"
-          >
-            Tick test
-          </button>
-          <button id="test_btn3" className="button">
-            Test Tick
-          </button>
         </div>
 
         <footer>
