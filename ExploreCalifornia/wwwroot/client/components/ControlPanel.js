@@ -18,6 +18,7 @@ class ControlPanel extends React.Component {
     this.handleTestClick2 = this.handleTestClick2.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.handlePressPlay = this.handlePressPlay.bind(this)
+    this.handlePressStop = this.handlePressStop.bind(this)
   }
   handleTestClick(evt) {
     console.log('clicked test 1')
@@ -37,11 +38,13 @@ class ControlPanel extends React.Component {
     this.props.deleteData()
   }
   handlePressPlay(evt) {
-    console.log('you pressed play')
     let timer = setInterval(() => {
       console.log('tick')
     }, 1000)
     this.setState({ timer })
+  }
+  handlePressStop(evt) {
+    this.clearInterval(this.state.timer)
   }
   componentWillUnmount() {
     this.clearInterval(this.state.timer)
