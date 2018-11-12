@@ -21,20 +21,15 @@ class ControlPanel extends React.Component {
     this.handlePressStop = this.handlePressStop.bind(this)
   }
   handleTestClick(evt) {
-    console.log('clicked test 1')
     this.props.setData()
   }
   handleTestIncrement(evt) {
-    console.log('clicked test 1')
     this.props.incrementCount()
   }
   handleTestClick2(evt) {
-    console.log('clicked test 2')
     this.props.fetchData()
   }
   handleDelete(evt) {
-    console.log('clicked detele')
-
     this.props.deleteData()
   }
   handlePressPlay(evt) {
@@ -91,7 +86,7 @@ class ControlPanel extends React.Component {
 
         <footer>
           <p>
-            Built by [me] at{' '}
+            Built by [Paul Ebreo] at{' '}
             <a href="http://www.fullstackacademy.com/">Fullstack Academy</a>
           </p>
         </footer>
