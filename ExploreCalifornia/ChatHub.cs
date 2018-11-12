@@ -79,5 +79,10 @@ namespace ExploreCalifornia
             life.ClearField();
             await Clients.All.SendAsync("ReceiveNewData", life.GetState());
         }
+        public async Task Update(bool [,] Cells)
+        {
+            Console.WriteLine("cleared");
+            await life.UpdateField(Cells);
+        }
     }
 }

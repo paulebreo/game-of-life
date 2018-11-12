@@ -1,7 +1,8 @@
 import React from 'react'
 import uuidv1 from 'uuid/v1'
 import { connect } from 'react-redux'
-import { mouseDown, mouseUp } from '../store'
+import store from '../store'
+import { mouseDown, mouseUp, writeTableData } from '../store'
 import TableCell from './TableCell'
 
 class Table extends React.Component {
@@ -12,6 +13,7 @@ class Table extends React.Component {
           id="board"
           onMouseDown={this.props.handleMouseDown}
           onMouseUp={this.props.handleMouseUp}
+          onMouseLeave={this.props.handleMouseLeave}
         >
           <tbody>
             {this.props.tableData.map((row, rowIdx) => (
@@ -49,7 +51,13 @@ const mapDispatch = dispatch => {
     },
     handleMouseUp: evt => {
       evt.preventDefault()
-      dispatch(mouseUp())
+      const tableData = store.getState().tableData
+      console.log('data', tableData)
+
+      dispatch(writeTableData(tableData))
+    },
+    handleMouseLeave: evt => {
+      evt.preventDefault()
     }
   }
 }

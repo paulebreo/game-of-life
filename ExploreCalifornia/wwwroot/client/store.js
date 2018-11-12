@@ -50,6 +50,12 @@ export const incrementCount = () => {
     clientConnection.invoke('IncrementCount')
   }
 }
+export const writeTableData = tableData => {
+  return async dispatch => {
+    dispatch(mouseUp())
+    clientConnection.invoke('Update', tableData)
+  }
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -58,6 +64,8 @@ const reducer = (state = initialState, action) => {
     case MOUSE_DOWN:
       return { ...state, isMouseDown: true }
     case MOUSE_UP:
+      console.log('the mouse is up')
+
       return { ...state, isMouseDown: false }
     case TOGGLE_CELL: {
       let newTableData = [...state.tableData]
