@@ -36,7 +36,12 @@ class ControlPanel extends React.Component {
     return (
       <React.Fragment>
         <div id="control_panel">
-          <button type="button" id="step_btn" className="button">
+          <button
+            onClick={this.handleTestClick2}
+            type="button"
+            id="step_btn"
+            className="button"
+          >
             Step
           </button>
           <button type="button" id="play_btn" className="button">
@@ -45,7 +50,11 @@ class ControlPanel extends React.Component {
           <button type="button" id="stop_btn" className="button">
             Stop
           </button>
-          <button id="random_btn" className="button">
+          <button
+            onClick={this.handleTestClick}
+            id="random_btn"
+            className="button"
+          >
             Randomize Board
           </button>
           <button onClick={this.handleDelete} id="clear_btn" className="button">
