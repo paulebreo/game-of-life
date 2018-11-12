@@ -52,12 +52,12 @@ const mapDispatch = dispatch => {
     handleMouseUp: evt => {
       evt.preventDefault()
       const tableData = store.getState().tableData
-      console.log('data', tableData)
-
       dispatch(writeTableData(tableData))
     },
     handleMouseLeave: evt => {
       evt.preventDefault()
+      const tableData = store.getState().tableData
+      dispatch(writeTableData(tableData))
     }
   }
 }
