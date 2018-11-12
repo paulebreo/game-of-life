@@ -10,10 +10,14 @@ import {
 class ControlPanel extends React.Component {
   constructor() {
     super()
+    this.state = {
+      timer: null
+    }
     this.handleTestIncrement = this.handleTestIncrement.bind(this)
     this.handleTestClick = this.handleTestClick.bind(this)
     this.handleTestClick2 = this.handleTestClick2.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.handlePressPlay = this.handlePressPlay.bind(this)
   }
   handleTestClick(evt) {
     console.log('clicked test 1')
@@ -32,6 +36,16 @@ class ControlPanel extends React.Component {
 
     this.props.deleteData()
   }
+  handlePressPlay(evt) {
+    console.log('you pressed play')
+    let timer = setInterval(() => {
+      console.log('tick')
+    }, 1000)
+    this.setState({ timer })
+  }
+  componentWillUnmount() {
+    this.clearInterval(this.state.timer)
+  }
   render() {
     return (
       <React.Fragment>
@@ -44,7 +58,12 @@ class ControlPanel extends React.Component {
           >
             Step
           </button>
-          <button type="button" id="play_btn" className="button">
+          <button
+            onClick={this.handlePressPlay}
+            type="button"
+            id="play_btn"
+            className="button"
+          >
             Play
           </button>
           <button type="button" id="stop_btn" className="button">
