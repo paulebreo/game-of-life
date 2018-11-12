@@ -31,15 +31,6 @@ namespace ExploreCalifornia.Services
 
 
         /// <summary>
-        /// Advances the game by one generation and prints the current state to console.
-        /// </summary>
-        public void DrawAndGrow()
-        {
-            DrawGame();
-            Grow();
-        }
-
-        /// <summary>
         /// Advances the game by one generation according to GoL's ruleset.
         /// </summary>
 
@@ -98,23 +89,7 @@ namespace ExploreCalifornia.Services
             return NumOfAliveNeighbors;
         }
 
-        /// <summary>
-        /// Draws the game to the console.
-        /// </summary>
-
-        private void DrawGame()
-        {
-            for (int i = 0; i < Heigth; i++)
-            {
-                for (int j = 0; j < Width; j++)
-                {
-                    Console.Write(Cells[i, j] ? "x" : " ");
-                    if (j == Width - 1) Console.WriteLine("\r");
-                }
-            }
-            Console.SetCursorPosition(0, Console.WindowTop);
-        }
-
+       
         /// <summary>
         /// Initializes the field with random boolean values.
         /// </summary>
