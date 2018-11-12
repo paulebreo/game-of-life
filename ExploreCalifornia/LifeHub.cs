@@ -33,7 +33,10 @@ namespace ExploreCalifornia
         }
         public async Task Update(bool [,] Cells)
         {
+            var toExclude = new List<string>() { Context.ConnectionId.ToString()};
             await life.UpdateField(Cells);
+            //await Clients.All.SendAsync("ReceiveNewData", life.GetState());
+            await Clients.AllExcept(toExclude).SendAsync("ReceiveNewData", life.GetState());
         }
     }
 }
