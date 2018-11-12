@@ -8,20 +8,13 @@ using ExploreCalifornia.Services;
 
 namespace ExploreCalifornia
 {
-    public class ChatHub : Hub
+    public class LifeHub : Hub
     {
 
-        private readonly IGameOfLifeService gol;
         private readonly ILifeSimulationService life;
 
-        public ChatHub(IGameOfLifeService gol, ILifeSimulationService life) {
-            this.gol = gol;
+        public LifeHub(ILifeSimulationService life) {
             this.life = life;
-        }
-        public async Task IncrementCount()
-        {
-            gol.Increment();
-            await Clients.All.SendAsync("ReceiveCount", gol.GetCount());
         }
         public async Task Init()
         {

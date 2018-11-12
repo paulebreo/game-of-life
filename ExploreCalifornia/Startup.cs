@@ -33,7 +33,6 @@ namespace ExploreCalifornia
             });
 
             services.AddSignalR();
-            services.AddSingleton<IGameOfLifeService, GameOfLifeService>();
             services.AddSingleton<ILifeSimulationService, LifeSimulationService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -57,7 +56,7 @@ namespace ExploreCalifornia
             //app.UseCookiePolicy();
 
             app.UseSignalR(routes=> {
-                routes.MapHub<ChatHub>("/gol");
+                routes.MapHub<LifeHub>("/gol");
             });
             //app.UseMvc();
         }
