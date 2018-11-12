@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TheGameOfLife.Services
+namespace ExploreCalifornia.Services
 {
     public interface EmptyInterface
     {

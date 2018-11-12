@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TheGameOfLife.Models
+namespace ExploreCalifornia.Models
 {
     public class ChatMessage
     {

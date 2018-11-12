@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TheGameOfLife.Services
+namespace ExploreCalifornia.Services
 {
     public interface IGameOfLifeService
     {
