@@ -1,6 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { initTableData, updateTableData, incrementCount } from '../store'
+import {
+  initTableData,
+  updateTableData,
+  deleteTableData,
+  incrementCount
+} from '../store'
 
 class ControlPanel extends React.Component {
   constructor() {
@@ -8,6 +13,7 @@ class ControlPanel extends React.Component {
     this.handleTestIncrement = this.handleTestIncrement.bind(this)
     this.handleTestClick = this.handleTestClick.bind(this)
     this.handleTestClick2 = this.handleTestClick2.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
   handleTestClick(evt) {
     console.log('clicked test 1')
@@ -20,6 +26,11 @@ class ControlPanel extends React.Component {
   handleTestClick2(evt) {
     console.log('clicked test 2')
     this.props.fetchData()
+  }
+  handleDelete(evt) {
+    console.log('clicked detele')
+
+    this.props.deleteData()
   }
   render() {
     return (
@@ -37,7 +48,7 @@ class ControlPanel extends React.Component {
           <button id="random_btn" className="button">
             Randomize Board
           </button>
-          <button id="clear_btn" className="button">
+          <button onClick={this.handleDelete} id="clear_btn" className="button">
             Clear
           </button>
           <button
@@ -87,7 +98,8 @@ const mapDispatch = dispatch => {
   return {
     setData: () => dispatch(initTableData([[1, 0], [0, 1]])),
     fetchData: () => dispatch(updateTableData()),
-    incrementCount: () => dispatch(incrementCount())
+    incrementCount: () => dispatch(incrementCount()),
+    deleteData: () => dispatch(deleteTableData())
   }
 }
 

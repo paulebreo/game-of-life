@@ -5,6 +5,7 @@ namespace ExploreCalifornia.Services
     {
         void SetDimensions(int Heigth, int Width);
         void Grow();
+        void ClearField();
         bool[,] GetState();
 
     }

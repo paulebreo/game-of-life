@@ -130,5 +130,17 @@ namespace ExploreCalifornia.Services
                 }
             }
         }
+        public void ClearField()
+        {
+         
+            for (int i = 0; i < Heigth; i++)
+            {
+                for (int j = 0; j < Width; j++)
+                {
+                   
+                    Cells[i, j] = false;
+                }
+            }
+        }
     }
 }

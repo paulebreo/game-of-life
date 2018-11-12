@@ -63,7 +63,7 @@ namespace ExploreCalifornia
         }
         public async Task Init()
         {
-            life.SetDimensions(50, 50);
+            life.SetDimensions(10, 10);
             System.Threading.Thread.Sleep(10);
             await Clients.All.SendAsync("ReceiveInitialData", life.GetState());
         }
@@ -71,6 +71,12 @@ namespace ExploreCalifornia
         {
             life.Grow();
             System.Threading.Thread.Sleep(10);
+            await Clients.All.SendAsync("ReceiveNewData", life.GetState());
+        }
+        public async Task Clear()
+        {
+            Console.WriteLine("cleared"); 
+            life.ClearField();
             await Clients.All.SendAsync("ReceiveNewData", life.GetState());
         }
     }

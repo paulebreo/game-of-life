@@ -39,8 +39,14 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleMouseDown: evt => dispatch(mouseDown()),
-    handleMouseUp: evt => dispatch(mouseUp())
+    handleMouseDown: evt => {
+      evt.preventDefault()
+      dispatch(mouseDown())
+    },
+    handleMouseUp: evt => {
+      evt.preventDefault()
+      dispatch(mouseUp())
+    }
   }
 }
 

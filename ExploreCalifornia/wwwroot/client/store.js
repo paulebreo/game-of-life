@@ -40,6 +40,11 @@ export const updateTableData = () => {
     clientConnection.invoke('Tick')
   }
 }
+export const deleteTableData = () => {
+  return async dispatch => {
+    clientConnection.invoke('Clear')
+  }
+}
 export const incrementCount = () => {
   return async dispatch => {
     clientConnection.invoke('IncrementCount')
@@ -55,8 +60,12 @@ const reducer = (state = initialState, action) => {
     case MOUSE_UP:
       return { ...state, isMouseDown: false }
     case TOGGLE_CELL: {
-      const newTableData = [...state.tableData]
-      newTableData[action.row][action.column] = true
+      let newTableData = [...state.tableData]
+      newTableData[action.row][action.column] = newTableData[action.row][
+        action.column
+      ]
+        ? false
+        : true
       return { ...state, tableData: newTableData }
     }
     default:
