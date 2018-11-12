@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ExploreCalifornia.Services
+namespace TheGameOfLife.Services
 {
 	public class LifeSimulationService : ILifeSimulationService
     {

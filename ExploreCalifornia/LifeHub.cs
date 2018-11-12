@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ExploreCalifornia.Models;
-using ExploreCalifornia.Services;
+using TheGameOfLife.Models;
+using TheGameOfLife.Services;
 
-namespace ExploreCalifornia
+namespace TheGameOfLife
 {
     public class LifeHub : Hub
     {

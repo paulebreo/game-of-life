@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ExploreCalifornia.Services
+namespace TheGameOfLife.Services
 {
     public class GameOfLifeService : IGameOfLifeService
     {
