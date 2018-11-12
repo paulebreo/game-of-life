@@ -39,15 +39,15 @@ class ControlPanel extends React.Component {
   }
   handlePressPlay(evt) {
     let timer = setInterval(() => {
-      console.log('tick')
-    }, 1000)
+      this.props.fetchData()
+    }, 500)
     this.setState({ timer })
   }
   handlePressStop(evt) {
-    this.clearInterval(this.state.timer)
+    clearInterval(this.state.timer)
   }
   componentWillUnmount() {
-    this.clearInterval(this.state.timer)
+    clearInterval(this.state.timer)
   }
   render() {
     return (
@@ -69,7 +69,12 @@ class ControlPanel extends React.Component {
           >
             Play
           </button>
-          <button type="button" id="stop_btn" className="button">
+          <button
+            onClick={this.handlePressStop}
+            type="button"
+            id="stop_btn"
+            className="button"
+          >
             Stop
           </button>
           <button
